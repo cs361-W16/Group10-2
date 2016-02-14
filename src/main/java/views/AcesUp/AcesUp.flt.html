@@ -1,0 +1,400 @@
+<style>
+    div.transbox {
+  margin: 30px;
+  background-color: #ffffff;
+  border: 1px solid black;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+div.transbox p {
+  margin: 5%;
+  font-weight: bold;
+  color: #000000;
+}
+
+    .button {
+    background-color: #D3D3D3; /* light grey */
+    border: none;
+    color: ;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+    .button4 {border-radius: 12px;}
+</style>
+<div class="transbox">
+    <h1 style="color:black;">Aces Up</h1>
+</div>
+
+<link href="/assets/css/AcesUp.css" rel="stylesheet">
+<script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<body background="http://hdimagesnew.com/wp-content/uploads/2015/11/C-black-and-white-cat.jpg">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery UI Draggable - Default functionality</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        #draggable { width: 100px; height: 20px; padding: 0.5em; }
+        #move0, #move1, #move2, #move3 { width: 100px; height: 40px; padding: 0.5em; float: left; margin: 10px; }
+    </style>
+</head>
+
+<h1 style="color:blue;" id = "score">Score: 0</h1>
+<table>
+
+    <tr class="title">
+        <td>Column0</td>
+        <td >Column1</td>
+        <td >Column2</td>
+        <td >Column3</td>
+    </tr>
+
+    <tr><td class="columnOfCards" id="c0">
+        <table>
+            <tr><td class="cardLocation l0"></td></tr>
+            <tr><td class="cardLocation l1"></td></tr>
+            <tr><td class="cardLocation l2"></td></tr>
+            <tr><td class="cardLocation l3"></td></tr>
+            <tr><td class="cardLocation l4"></td></tr>
+            <tr><td class="cardLocation l5"></td></tr>
+            <tr><td class="cardLocation l6"></td></tr>
+            <tr><td class="cardLocation l7"></td></tr>
+            <tr><td class="cardLocation l8"></td></tr>
+            <tr><td class="cardLocation l9"></td></tr>
+            <tr><td class="cardLocation l10"></td></tr>
+            <tr><td class="cardLocation l11"></td></tr>
+            <tr><td class="cardLocation l12"></td></tr>
+            <tr><td class="cardLocation l13"></td></tr>
+        </table>
+    </td>
+        <td class="columnOfCards" id="c1">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c2">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+        <td class="columnOfCards" id="c3">
+            <table>
+                <tr><td class="cardLocation l0"></td></tr>
+                <tr><td class="cardLocation l1"></td></tr>
+                <tr><td class="cardLocation l2"></td></tr>
+                <tr><td class="cardLocation l3"></td></tr>
+                <tr><td class="cardLocation l4"></td></tr>
+                <tr><td class="cardLocation l5"></td></tr>
+                <tr><td class="cardLocation l6"></td></tr>
+                <tr><td class="cardLocation l7"></td></tr>
+                <tr><td class="cardLocation l8"></td></tr>
+                <tr><td class="cardLocation l9"></td></tr>
+                <tr><td class="cardLocation l10"></td></tr>
+                <tr><td class="cardLocation l11"></td></tr>
+                <tr><td class="cardLocation l12"></td></tr>
+                <tr><td class="cardLocation l13"></td></tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<button class="button button4" id="dealButton">Deal</button>
+
+<button class="button button4" id="infoButton">?</button>
+<p id="info" style="border-style: groove; margin-right: 900px; display: none"> 1. Deal four cards in a row face up.<br>
+
+    2. If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit.<br>
+
+    3. Repeat step 2 until there are no more pairs of cards with the same suit.<br>
+
+    4. Whenever there are any empty spaces, you may choose the top card of another pile to be put into the empty space. After you do this, go to Step 2.<br>
+
+    5. When there are no more cards to move or remove, deal out the next four cards from the deck face-up onto each pile.<br>
+
+    6. Repeat Step 2, using only the visible, or top, cards on each of the four piles.<br>
+
+    7. When the last four cards have been dealt out and any moves made, the game is over. The fewer cards left in the tableau, the better. To win is to have only the four aces left.
+
+    When the game ends, the number of discarded cards is your score. The maximum score (and thus the score necessary to win) is 48, which means all cards have been discarded except for the four aces, thus the name of the game.</p>
+
+<BR>Remove from: <button id="Remove1">Column1</button><button id="Remove2">Column2</button><button id="Remove3">Column3</button><button id="Remove4">Column4</button>
+
+<BR>Move from column <input type="text" id="from_col"  /> to <input type="text" id="to_col"  /> <button id="moveButton">Move</button>
+
+<BR><button class="button button4" id="newGame">New Game</button>
+
+<script>
+
+var game;
+
+function display(game) {
+console.log(game);
+
+$( '#score' ).html("Score: " + game.score);
+
+
+$( '.columnOfCards .cardLocation' ).html("");
+
+    $.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+    });
+
+ $.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+    });
+reset();
+setDrag(game);
+setDrop(game);
+drag();
+drop();
+
+
+}
+
+$.getJSON("http://localhost:8080/game", function( data ) {
+display(data);
+game = data;
+});
+
+
+$("#dealButton").click(function(){
+$.ajax({
+  type: "POST",
+  url: "/dealGame",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+$("#infoButton").click(function(){
+    console.log("clicked!!");
+    $("#info").toggle(1000)
+
+});
+
+
+function removeCard(colNumber){
+$.ajax({
+type: "POST",
+url: "/removeCard/"+colNumber,
+data: JSON.stringify(game),
+success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+game = data;
+display(data);},
+contentType:"application/json; charset=utf-8",
+dataType:"json",
+});
+
+}
+function setDrag(game){
+var i=0;
+$.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c0 td")[i-1]).draggable({ disabled: false })
+    $($("#c0 td")[i-1]).draggable({revert:"invalid"});
+i=0;
+$.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c1 td")[i-1]).draggable({ disabled: false })
+    $($("#c1 td")[i-1]).draggable({revert:"invalid"});
+i=0;
+$.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c2 td")[i-1]).draggable({ disabled: false })
+    $($("#c2 td")[i-1]).draggable({revert:"invalid"});
+i=0;
+$.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c3 td")[i-1]).draggable({ disabled: false })
+    $($("#c3 td")[i-1]).draggable({revert:"invalid"});
+}
+
+function setDrop(game){
+var i=0;
+$.each(game.cols[0], function( key, val ) {
+        $( '#c0 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+		$($("#c0 td")[i]).droppable({ disabled: false });
+i=0
+$.each(game.cols[1], function( key, val ) {
+        $( '#c1 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c1 td")[i]).droppable({ disabled: false });
+i=0;
+$.each(game.cols[2], function( key, val ) {
+        $( '#c2 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c2 td")[i]).droppable({ disabled: false });
+i=0;
+$.each(game.cols[3], function( key, val ) {
+        $( '#c3 .l'+key ).html(val.value + val.suit);
+        i++;
+    });
+    $($("#c3 td")[i]).droppable({ disabled: false });
+}
+
+function reset(game){
+    for(var i=0;i<14;i++){
+        $($("#c0 td")[i]).draggable({ disabled: true });
+        $($("#c1 td")[i]).draggable({ disabled: true });
+        $($("#c2 td")[i]).draggable({ disabled: true });
+        $($("#c3 td")[i]).draggable({ disabled: true });
+        $($("#c0 td")[i]).droppable({ disabled: true });
+        $($("#c1 td")[i]).droppable({ disabled: true });
+        $($("#c2 td")[i]).droppable({ disabled: true });
+        $($("#c3 td")[i]).droppable({ disabled: true });
+    }
+}
+
+ function drag() {
+    $( "#draggable" ).draggable({revert:"invalid"});
+ }
+
+ function drop(){
+    $( "#move0" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      drop: function( event, ui ) {
+        $( this )
+        event.droppable
+         console.dir(ui.draggable);
+      }
+    });
+    $( "#move1" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      drop: function( event, ui ) {
+        $( this )
+        event.droppable
+         console.dir(ui.draggable);
+      }
+    });
+    $( "#move2" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      drop: function( event, ui ) {
+        $( this )
+        event.droppable
+         console.dir(ui.draggable);
+      }
+    });
+    $( "#move3" ).droppable({
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      drop: function( event, ui ) {
+        $( this )
+        event.droppable
+         console.dir(ui.draggable).id;
+         this;
+      }
+    });
+  }
+
+$("#Remove1").click(function(){
+    removeCard(0);
+});
+$("#Remove2").click(function(){
+    removeCard(1);
+});
+$("#Remove3").click(function(){
+    removeCard(2);
+});
+$("#Remove4").click(function(){
+    removeCard(3);
+});
+
+
+$("#moveButton").click(function(){
+var colFrom = $("#from_col").val();
+var colTo = $("#to_col").val();
+$.ajax({
+  type: "POST",
+  url: "/moveCard/"+colFrom+"/"+colTo,
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+$("#newGame").click(function(){
+$.ajax({
+  type: "GET",
+  url: "/game",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+</script>
+
+
+</body>
+</html>
+

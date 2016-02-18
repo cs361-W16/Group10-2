@@ -11,28 +11,28 @@ public class testGame {
 
     @Test
     public void testGameCreation(){
-        Game g = new Game();
+        Game g = new Game(0);
         assertNotNull(g);
     }
 
     @Test
     public void testGameBuildDeck(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.buildDeck();
-        assertEquals(52,g.deck.size());
+        assertEquals(52,g.d.deck.size());
     }
 
     @Test
     public void testGameInit(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.buildDeck();
         g.shuffle();
-        assertNotEquals(2,g.deck.get(0).getValue());
+        assertNotEquals(2,g.d.deck.get(0).getValue());
     }
 
     @Test
     public void testGameStart(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.buildDeck();
         g.shuffle();
         g.dealFour();
@@ -44,7 +44,7 @@ public class testGame {
 
     @Test
     public void testCustomDeal(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.buildDeck();
         g.customDeal(0,3,6,9);
         assertEquals("2Clubs",g.cols.get(0).get(0).toString());
@@ -55,7 +55,7 @@ public class testGame {
 
     @Test
     public void testRemoveFunction(){
-        Game g = new Game();
+        Game g = new Game(0);
         g.buildDeck();
         g.customDeal(0,3,6,9);
         g.remove(2);

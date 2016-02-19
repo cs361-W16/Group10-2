@@ -137,6 +137,13 @@ div.transbox p {
 <button class="button button4" id="dealButton">Deal</button>
 
 <button class="button button4" id="infoButton">?</button>
+
+<select id="gameType">
+    <option value="Spanish">Spanish Deck</option>
+    <option value="Normal">Normal Deck</option>
+</select>
+<button type="button" onclick="gameType()">Submit</button>
+
 <p id="info" style="border-style: groove; margin-right: 900px; display: none"> 1. Deal four cards in a row face up.<br>
 
     2. If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit.<br>
@@ -200,6 +207,17 @@ display(data);
 game = data;
 });
 
+function gameType(){
+
+    var x = document.getElementById("gameType").value;
+    console.log(x);
+    if(x == "Spanish"){
+        console.log("clicked spanish!!");
+    }
+    else{
+    console.log("clicked Normal!!");
+    }
+}
 
 $("#dealButton").click(function(){
 $.ajax({

@@ -10,19 +10,22 @@ import java.util.Random;
 public class Game {
 
     public int score;
-    public Deck d;
+    public int type;
+    public UDeck d;
+    public SDeck e;
 
-/*
-    public java.util.List<Card> deck = new ArrayList<>();
-*/
+
+    //public java.util.List<Card> deck = new ArrayList<>();
+
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>();
 
 
-    public Game(int deckType){
+    public Game(){
 
-        if (deckType == 0) d = new UDeck();
-        else d = new SDeck();
+        d = new UDeck();
+        e = new SDeck();
+        type = 0;
 
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
@@ -31,9 +34,20 @@ public class Game {
         score = 0;
     }
 
-    public void buildDeck() {
-        d.buildDeck();
+    public void gameType (int i) {
+        if (i == 0) {
+            type = 0;
+        }
+        else {
+            type = 1;
+        }
     }
+
+    public void buildDeck() {
+        if (type == 0) d.buildDeck();
+        else e.buildDeck();
+    }
+
 /*
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
@@ -46,8 +60,10 @@ public class Game {
 */
 
     public void shuffle() {
-        d.shuffle();
+        if (type == 0) d.shuffle();
+        else e.shuffle();
     }
+
 /*
     public void shuffle() {
         long seed = System.nanoTime();
@@ -57,9 +73,11 @@ public class Game {
 
     public void dealFour() {
         for (int i = 0; i < 4; i++) {
-            cols.get(i).add(d.deal());
+            if (type == 0) cols.get(i).add(d.deal());
+            else cols.get(i).add(e.deal());
         }
     }
+
 /*
     public void dealFour() {
         for(int i = 0; i < 4; i++){

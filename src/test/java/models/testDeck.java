@@ -9,18 +9,18 @@ import static org.junit.Assert.*;
  */
 public class testDeck {
     @Test
-    public void testShuffle(){
-        Deck d = new UDeck();
+    public void testShuffleS(){
+        SDeck d = new SDeck();
         d.buildDeck();
         d.shuffle();
         assertNotEquals(2,d.deck.get(0).getValue());
     }
 
     @Test
-    public void testDeal() {
-        Deck d = new UDeck();
+    public void testDealS() {
+        SDeck d = new SDeck();
         d.buildDeck();
         Card c = d.deal();
-        assertEquals("14Spades", c.toString());
+        assertEquals("10Swords", c.toString());
     }
 }

@@ -19,7 +19,7 @@ public class testGame {
     public void testGameBuildDeck(){
         Game g = new Game();
         g.buildDeck();
-        assertEquals(52,g.deck.size());
+        assertEquals(52,g.d.deck.size());
     }
 
     @Test
@@ -27,7 +27,7 @@ public class testGame {
         Game g = new Game();
         g.buildDeck();
         g.shuffle();
-        assertNotEquals(2,g.deck.get(0).getValue());
+        assertNotEquals(2,g.d.deck.get(0).getValue());
     }
 
     @Test
@@ -62,6 +62,25 @@ public class testGame {
         assertEquals(0,g.cols.get(2).size());
     }
 
+    @Test
+    public void testDealFour() {
+        Game g = new Game();
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
 
+        assertEquals(1,g.cols.get(0).size());
+        assertEquals(1,g.cols.get(1).size());
+        assertEquals(1,g.cols.get(2).size());
+        assertEquals(1,g.cols.get(3).size());
+
+        g.dealFour();
+
+
+        assertEquals(2,g.cols.get(0).size());
+        assertEquals(2,g.cols.get(1).size());
+        assertEquals(2,g.cols.get(2).size());
+        assertEquals(2,g.cols.get(3).size());
+    }
 
 }

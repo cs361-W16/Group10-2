@@ -38,12 +38,24 @@ public class ApplicationController {
     
     public Result gameGet(){
         Game g = new Game();
+        g.gameType(0);
         g.buildDeck();
         g.shuffle();
         g.dealFour();
 
         return Results.json().render(g);
     }
+
+    public Result gameGetS(){
+        Game g = new Game();
+        g.gameType(1);
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
+
+        return Results.json().render(g);
+    }
+
 
     public Result dealPost(Context context, Game g) {
         if(context.getRequestPath().contains("deal")){

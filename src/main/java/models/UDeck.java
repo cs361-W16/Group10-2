@@ -5,5 +5,4 @@ package models;
  */
 public class UDeck extends Deck {
 	public void buildDeck(){}
-
 }

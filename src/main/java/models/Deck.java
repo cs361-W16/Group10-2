@@ -7,11 +7,11 @@ import java.util.Random;
 /**
  * Created by paul on 2/17/16.
  */
-public abstract class Deck {
+abstract public class Deck {
 
     public java.util.List<Card> deck = new ArrayList<>();
 
-    public abstract void buildDeck();
+    abstract public void buildDeck();
 
     public void shuffle() {
         long seed = System.nanoTime();

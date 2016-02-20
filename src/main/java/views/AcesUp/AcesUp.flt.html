@@ -44,7 +44,6 @@ div.transbox p {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <link rel="stylesheet" href="/resources/demos/style.css">
     <style>
         #draggable { width: 100px; height: 20px; padding: 0.5em; }
         #move0, #move1, #move2, #move3 { width: 100px; height: 40px; padding: 0.5em; float: left; margin: 10px; }
@@ -141,7 +140,15 @@ div.transbox p {
 <center><button class="button button4" id="dealButton">Deal</button>
 <button class="button button4" id="newGame">New Game</button>
 <button class="button button4" id="infoButton">?</button></center>
-<div class="transbox"><p id="info"> 1. Deal four cards in a row face up.<br>
+
+<select id="gameType">
+    <option value="Spanish">Spanish Deck</option>
+    <option value="Normal">Normal Deck</option>
+</select>
+<button type="button" onclick="gameType()">Submit</button>
+
+<div class=transbox"><p id="info"> 1. Deal four cards in a row face up.<br>
+
 
     2. If there are two or more cards of the same suit, discard all but the highest-ranked card of that suit.<br>
 
@@ -829,9 +836,10 @@ $( '.columnOfCards .cardLocation' ).html("");
     });
 reset();
 setDrag(game);
-setDrop(game);
 drag();
-drop();
+//these are better left out until implemented with move()
+//setDrop(game);
+//drop();
 
 
 }
@@ -841,6 +849,18 @@ display(data);
 game = data;
 });
 
+function gameType(){
+
+    var x = document.getElementById("gameType").value;
+    console.log(x);
+    if(x == "Spanish"){
+        console.log("clicked spanish!!");
+    }
+    else{
+    console.log("clicked Normal!!");
+    $("#newGame").click();
+    }
+}
 
 $("#dealButton").click(function(){
 $.ajax({

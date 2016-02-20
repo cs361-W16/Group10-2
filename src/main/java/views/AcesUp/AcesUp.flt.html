@@ -44,6 +44,7 @@ div.transbox p {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
     <style>
         #draggable { width: 100px; height: 20px; padding: 0.5em; }
         #move0, #move1, #move2, #move3 { width: 100px; height: 40px; padding: 0.5em; float: left; margin: 10px; }
@@ -837,9 +838,7 @@ $( '.columnOfCards .cardLocation' ).html("");
 reset();
 setDrag(game);
 drag();
-//these are better left out until implemented with move()
-//setDrop(game);
-//drop();
+
 
 
 }
@@ -855,10 +854,23 @@ function gameType(){
     console.log(x);
     if(x == "Spanish"){
         console.log("clicked spanish!!");
+
+        $.ajax({
+         type: "GET",
+        url: "/gameS",
+        data: JSON.stringify(game),
+        success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        game = data;
+        display(data);},
+        contentType:"application/json; charset=utf-8",
+         dataType:"json",
+});
     }
     else{
     console.log("clicked Normal!!");
+
     $("#newGame").click();
+
     }
 }
 
@@ -1051,6 +1063,8 @@ $.ajax({
   dataType:"json",
 });
 });
+
+
 
 
 </script>

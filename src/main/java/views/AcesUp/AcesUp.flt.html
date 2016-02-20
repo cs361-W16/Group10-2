@@ -179,8 +179,6 @@ console.log(game);
 
 $( '#score' ).html("Score: " + game.score);
 
-function display(game) {
-console.log(game);
 $( '.columnOfCards .cardLocation' ).attr("background","");
     $.each(game.cols[0], function( key, val ) {
     if(val.value==2&& val.suit =="Clubs"){
@@ -835,9 +833,9 @@ $( '.columnOfCards .cardLocation' ).html("");
  $.each(game.cols[3], function( key, val ) {
         $( '#c3 .l'+key ).html(val.value + val.suit);
     });
-reset();
-setDrag(game);
-drag();
+//reset();
+//setDrag(game);
+//drag();
 
 
 
@@ -907,7 +905,7 @@ dataType:"json",
 });
 
 }
-function setDrag(game){
+/*function setDrag(game){
 var i=0;
 $.each(game.cols[0], function( key, val ) {
         $( '#c0 .l'+key ).html(val.value + val.suit);
@@ -1021,7 +1019,7 @@ function reset(game){
       }
     });
   }
-
+*/
 $("#Remove1").click(function(){
     removeCard(0);
 });
